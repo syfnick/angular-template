@@ -1,0 +1,34 @@
+{
+  "name": "Clean blog",
+  "authors": [
+    "Nick Sun <syfnick@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.9",
+    "angular-ui-router": "~0.2.16",
+    "bootstrap": "~3.3.6",
+    "jquery": "~2.2.0",
+    "angular-sanitize": "~1.4.9",
+    "angular-animate": "~1.4.9"
+  },
+  "devDependencies": {
+    "angular": "~1.4.9",
+    "angular-ui-router": "~0.2.16",
+    "bootstrap": "~3.3.6",
+    "jquery": "~2.2.0",
+    "angular-sanitize": "~1.4.9",
+    "angular-animate": "~1.4.9"
+  }
+}

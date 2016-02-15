@@ -1,0 +1,249 @@
+input,
+select {
+    min-width: 300px
+}
+
+.drop {
+    position: relative;
+    z-index: 100;
+}
+
+.drop:hover ul.dropdown {
+    display: inline-block
+}
+
+.drop ul.dropdown {
+    display: none;
+    margin: 0;
+    padding: 2px;
+    list-style: none;
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.05);
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.drop ul.dropdown li {
+    line-height: 25px;
+    font-size: 13px;
+    color: #505050;
+}
+
+.drop ul.dropdown li.separator {
+    height: 1px;
+    margin: 2px 12px;
+    background: #e6e6e6;
+    display: block
+}
+
+.drop ul.dropdown li:hover {
+    background: #f0f0f0
+}
+
+.drop ul.dropdown li a {
+    min-width: 120px;
+    padding: 4px 12px;
+    font-size: 13px;
+    color: #505050;
+    text-decoration: none;
+    display: block
+}
+
+.tag {
+    margin: 0 2px 2px 0;
+    padding: 5px 12px;
+    display: inline-block;
+    background: #556f79;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 13px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.tag.disabled {
+    background: rgba(85, 111, 121, 0.2)
+}
+
+.block {
+    width: 100%;
+    display: block
+}
+
+.bottom {
+    position: absolute !important;
+    bottom: 0;
+    left: 0;
+    right: 0
+}
+
+.sidebar {
+    width: 60px;
+    background: #273238;
+    z-index: 1000;
+}
+
+.sidebar .sidebar-item {
+    width: 60px;
+    height: 55px;
+    display: block;
+    text-align: center;
+    line-height: 55px;
+    font-size: 20px;
+    color: #556f79;
+    position: relative;
+    z-index: 100;
+}
+
+.sidebar .sidebar-item .hover {
+    padding: 0;
+    padding-right: 30px;
+    background: #273238;
+    border-radius: 0 30px 30px 0;
+    font-weight: 500;
+    font-size: 12px;
+    color: #fff;
+    text-align: left;
+    text-transform: uppercase;
+    position: absolute;
+    left: 100%;
+    right: auto;
+    top: 0;
+    bottom: 0;
+    opacity: 0;
+    transform: translateX(-10px);
+    -webkit-transform: translateX(-10px);
+    transition: all linear .2s
+}
+
+.sidebar .sidebar-item:hover {
+    color: #fff;
+}
+
+.sidebar .sidebar-item:hover .hover {
+    opacity: 1;
+    transform: translateX(0);
+    -webkit-transform: translateX(0)
+}
+
+.sidebar .sidebar-item.selected {
+    box-shadow: 3px 0 0 #83cbc4 inset;
+    color: #fff
+}
+
+.list {
+    width: 350px;
+    background: #fff;
+    border-right: 1px solid #e6e6e6;
+    overflow: auto;
+}
+
+.list .list-item {
+    margin: 0;
+    padding: 18px 25px;
+    font-size: 14px;
+    color: #273238;
+    display: block;
+    text-decoration: none;
+    position: relative;
+}
+
+.list .list-item:hover,
+.list .list-item.selected {
+    background: #f0f0f0
+}
+
+.list .list-item .list-title,
+.list .list-item .list-subtitle {
+    color: #273238;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden
+}
+
+.list .list-item .list-title {
+    font-size: 14px
+}
+
+.list .list-item .list-subtitle {
+    font-size: 12px;
+    opacity: .5
+}
+
+.list .list-item .list-more {
+    padding-left: 20px;
+    color: #83cbc4;
+    display: inline-block;
+    position: absolute;
+    top: 18px;
+    right: 20px
+}
+
+.detail {
+    padding: 30px 50px;
+    background: #fff;
+    overflow: auto;
+}
+
+.detail .detail-title {
+    margin: 20px 0 5px 0;
+    font-size: 13px;
+    display: block
+}
+
+.detail .detail-section {
+    margin: 40px 0 5px 0;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    display: block
+}
+
+.detail .group {
+    margin: 10px 0;
+    padding: 15px 20px;
+    background: #fafafa;
+    border-radius: 3px;
+}
+
+.detail .group > label {
+    margin: 0 0 20px 0;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    display: block
+}
+
+#admin .sidebar,
+#admin .list,
+#admin .detail {
+    display: block;
+    position: absolute
+}
+
+#admin .sidebar {
+    left: 0;
+    top: 0;
+    bottom: 0
+}
+
+#admin .list {
+    left: 60px;
+    top: 0;
+    bottom: 0
+}
+
+#admin .detail {
+    left: 410px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+#admin .detail.fill {
+    left: 60px
+}

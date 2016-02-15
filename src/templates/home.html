@@ -1,6 +1,9 @@
+<!-- Navigation -->
+<div ng-include="&quot;./dist/html/navbar.html&quot;"></div>
+
 <!-- Page Header -->
 <!-- Set your background image for this header on the line below. -->
-<header class="intro-header" style="background-image: url('img/home-bg.jpg')">
+<header class="intro-header">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -20,17 +23,17 @@
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <p class="text-center" ng-show="loading"><span class="fa fa-spinner fa-3x fa-spin"></span></p>
 
-            <div class="post-preview" ng-repeat="post in posts">
+            <div ng-hide="noResult" class="post-preview" ng-repeat="post in posts">
                 <h2 class="post-title">
-                    <a ui-sref="post({id:post.id,slug:post.post_slug})">{{ post.post_title }}</a>
+                    <a ui-sref="post({slug:post.slug})">{{ post.title }}</a>
                 </h2>
-                <div ng-show="post.categories != undefined">
-                <ul class="list-unstyled post-categories">
-                    <li ng-repeat="categories in post.categories">{{ categories.title }}{{$last ? ' ' : ',&nbsp;' }}</li>
-                </ul>
-            </div>
-                <p class="post-subtitle" ng-bind-html="post.post_content | limitHtml: 230"></p>
-                <p class="post-meta">Posted by <a href="#">{{ post.author.firstname }} {{ post.author.lastname }}</a> on {{ dateFormat(post.post_date) | date:'MMMM dd, yyyy'}}</p>
+                <div ng-show="post.category != undefined">
+                    <ul class="list-unstyled post-categories">
+                        <li>{{ post.category.name }}</li>
+                    </ul>
+                </div>
+                <p class="post-subtitle" ng-bind-html="post.body | limitHtml: 230"></p>
+                <p class="post-meta">Posted by <a href="#">{{ post.user.name }}</a> on {{ dateFormat(post.created_at) | date:'MMMM dd, yyyy'}}</p>
             </div>
             <hr>
 

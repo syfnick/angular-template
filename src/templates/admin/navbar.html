@@ -1,0 +1,22 @@
+<div ng-controller="NavController" class="sidebar">
+	<a ui-sref="main" class="sidebar-item">
+		<i class="fa fa-home"></i>
+		<span class="hover">Home</span>
+	</a>
+	<a ui-sref="admin-posts" ng-class="{ 'selected': isActive('/posts') }" class="sidebar-item">
+		<i class="fa fa-pencil"></i>
+		<span class="hover">Posts</span>
+	</a>
+	<a ui-sref="admin-users" ng-class="{ 'selected': isActive('/users') }" class="sidebar-item">
+		<i class="fa fa-user"></i>
+		<span class="hover">Users</span>
+	</a>
+	<a ui-sref="admin-about" ng-class="{ 'selected': isActive('/about') }" class="sidebar-item">
+		<i class="fa fa-question-circle"></i>
+		<span class="hover">About</span>
+	</a>
+	<a href="javascript:" ng-click="logout()" class="sidebar-item bottom">
+		<i class="fa fa-sign-out"></i>
+		<span class="hover">Logout</span>
+	</a>
+</div>

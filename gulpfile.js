@@ -33,13 +33,14 @@ var dir = {
 // Compile Our Sass
 gulp.task('sass', function() {
     return gulp.src(dir.src.scss)
+        .pipe(concat('all.scss'))
         .pipe(sass())
         .pipe(gulp.dest(dir.dest.css));
 });
 
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
-    return gulp.src(dir.src.js)
+    return gulp.src(['src/js/app.js', dir.src.js])
         .pipe(concat('all.js'))
         .pipe(gulp.dest(dir.dest.js))
         .pipe(rename('all.min.js'))
@@ -72,13 +73,16 @@ gulp.task('clean', function() {
 });
 
 gulp.task('serve', function() {
-    gulp.src('./')
+    return gulp.src('./')
         .pipe(webserver({
             livereload: true,
+            port: 8080,
             open: true
         }));
 });
 
-gulp.task('default', ['sass', 'scripts', 'images', 'html', 'watch']);
+gulp.task('build', ['sass', 'scripts', 'images', 'html']);
+
+gulp.task('default', ['sass', 'scripts', 'images', 'html', 'watch', 'serve']);
 
 gulp.task('deploy', ['sass', 'scripts', 'html', 'images', 'bower']);

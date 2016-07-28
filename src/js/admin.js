@@ -5,13 +5,13 @@
     angular.module('nick.blog').config(function($stateProvider) {
         return $stateProvider.state('admin-posts', {
             url: '/admin/posts',
-            templateUrl: 'app/admin/posts/index.html',
-            controller: 'AdminPostsCtrl',
+            templateUrl: './dist/html/admin/posts/index.html',
+            controller: 'AdminPostsController',
             authenticate: true
         }).state('admin-users', {
             url: '/admin/users',
             templateUrl: 'app/admin/users/index.html',
-            controller: 'AdminUsersCtrl',
+            controller: 'AdminUsersController',
             authenticate: true
         });
     });
@@ -42,7 +42,7 @@
         }
     };
 
-    angular.module('nick.blog').controller('AdminPostsCtrl', function($scope, $http, S3) {
+    angular.module('nick.blog').controller('AdminPostsController', function($scope, $http, $state) {
         $scope.removeFromList = function(list, item) {
             return list.splice(list.indexOf(item, 1));
         };
@@ -66,15 +66,18 @@
                 });
             });
         };
-        $http.get('/api/posts').success(function(posts) {
-            return $scope.posts = posts;
+        $http.get('http://api.sunyifan.site/v1/admin/posts/index').success(function(posts) {
+            return $scope.posts = posts.data;
+        }).error(function(data, header, config, status){
+            // error occurs
+            $state.go('login');
         });
-        $http.get('/api/posts/fields/title').success(function(relevant) {
-            return $scope.relevant = relevant;
-        });
-        $http.get('/api/users/fields/name,role').success(function(users) {
-            return $scope.users = users;
-        });
+        // $http.get('/api/posts/fields/title').success(function(relevant) {
+        //     return $scope.relevant = relevant;
+        // });
+        // $http.get('/api/users/fields/name,role').success(function(users) {
+        //     return $scope.users = users;
+        // });
         $scope.select = function(post) {
             delete $scope.newPhotoFile;
             delete $scope.newPhoto;
@@ -117,14 +120,14 @@
                 return $http.put('/api/posts/' + post._id, post);
             });
         };
-        return $scope["delete"] = function(post) {
-            if (confirm('Delete')) {
-                return $http["delete"]('/api/posts/' + post._id).success(function() {
-                    $scope.posts.splice($scope.posts.indexOf(post, 1));
-                    return delete $scope.selectedPost;
-                });
-            }
-        };
+        // return $scope["delete"] = function(post) {
+        //     if (confirm('Delete')) {
+        //         return $http["delete"]('/api/posts/' + post._id).success(function() {
+        //             $scope.posts.splice($scope.posts.indexOf(post, 1));
+        //             return delete $scope.selectedPost;
+        //         });
+        //     }
+        // };
     }).controller('AdminUsersCtrl', function($scope, $http, S3) {
         $scope.photoFileChanged = function(input) {
             $scope.newPhotoFile = input.files[0];

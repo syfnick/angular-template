@@ -1,0 +1,15 @@
+<ul class="pager">
+    <li class="_previous">
+        <a ng-disabled="isFirst()" ui-sref="pager({id: 1})">{{ getText('first') }}</a>
+    </li>
+    <li class="_previous">
+        <a ng-disabled="isFirst()" ui-sref="pager({id: prev_page_id})">{{ getText('prev') }}</a>
+    </li>
+    <span ng-repeat="i in page" ng-class="{active: i.active}"><a ui-sref="pager({id: i.text + 1})">{{ i.text + 1 }}</a></span>
+    <li class="_next">
+        <a ng-disabled="isLast()" ui-sref="pager({id: next_page_id})">{{ getText('next') }}</a>
+    </li>
+    <li class="_next">
+        <a ng-disabled="isLast()" ui-sref="pager({id: totalPages})">{{ getText('last') }}</a>
+    </li>
+</ul>

@@ -1,0 +1,60 @@
+<div class="detail">
+    <div ng-show="selectedPost">
+        <textarea ng-model="selectedPost.body" redactor="redactor"></textarea>
+        <div class="group">
+            <label>Cover image</label>
+            <div class="group-content">
+                <img src="{{selectedPost.cover}}" height="120" ng-hide="newPhoto" />
+                <img src="{{newPhoto}}" height="120" ng-show="newPhoto" />
+                <div ng-if="selectedPost.cover" class="detail-title">
+                    <a href="javascript:" ng-click="removeImage(selectedPost.cover)">Remove image</a> or
+                    <input type="file" onchange="angular.element(this).scope().photoFileChanged(this)" />
+                </div>
+            </div>
+        </div>
+        <div class="group">
+            <label>Basic info</label>
+            <div class="group-content">
+                <span class="detail-title">Title</span>
+                <input type="text" ng-model="selectedPost.title" />
+                <span class="detail-title">Date</span>
+                <input type="date" ng-model="selectedPost.updated_at" json-string-to-date="json-string-to-date" />
+                <span class="detail-title">Published</span>
+                <select ng-model="selectedPost.published" ng-options="o.v as o.n for o in [{ n: 'Not published', v: false }, { n: 'Published', v: true }]"></select>
+                <span class="detail-title">Featured</span>
+                <select ng-model="selectedPost.featured" ng-options="o.v as o.n for o in [{ n: 'Not featured', v: false }, { n: 'Featured', v: true }]"></select>
+            </div>
+        </div>
+        <div class="group">
+            <label>Authors</label>
+            <div class="group-content">
+                <div class="block">
+                    <a href="javascript:" ng-repeat="i in selectedPost.user.name" ng-click="removeFromList(selectedPost.user.name, i)" class="tag">{{i.name}}</a>
+                </div>
+                <div class="block">
+                    <span class="detail-title">Click to select authors</span>
+                    <a href="javascript:" ng-repeat="i in users | filter:{ role: 'admin' }" ng-click="addToList(selectedPost.user.name, i)" class="tag disabled">{{i.name}}</a>
+                </div>
+            </div>
+        </div>
+        <div class="group">
+            <label>Category</label>
+            <div class="group-content">
+                <div class="detail-title">
+                    <a href="javascript:" ng-repeat="i in selectedPost.category.name" ng-click="removeFromList(selectedPost.category.name, i)" class="tag">{{i}}</a>
+                </div>
+                <form ng-submit="addToList(selectedPost.category.name, newTag)" novalidate="novalidate">
+                    <span class="detail-title">Type and press enter</span>
+                    <input type="text" ng-model="newTag" placeholder="Type new category..." />
+                </form>
+            </div>
+        </div>
+        <span ng-show="progress">Uploading... ({{progress}}%) </span>
+        <div ng-hide="isNewPost" class="detail-title">
+            <a href="javascript:" ng-click="save(selectedPost)" class="button">Save changes</a>
+        </div>
+        <div ng-show="isNewPost" class="detail-title">
+            <a href="javascript:" ng-click="publish(selectedPost)" class="button">Add post</a>
+        </div>
+    </div>
+</div>

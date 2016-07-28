@@ -1,0 +1,31 @@
+<div class="list">
+    <div class="list-item">
+        <input type="text" placeholder="Search by title or content" ng-model="filter.$" style="min-width: 0; width: 95%;" class="block" />
+        <span style="top: 28px;" class="list-more drop">
+        	<i class="fa fa-ellipsis-v"></i>
+        	<ul class="dropdown">
+        		<li><a href="javascript:" ng-click="filter.published = undefined; filter.featured = undefined;">All</a></li>
+        		<li><a href="javascript:" ng-click="filter.published = true; filter.featured = undefined;">Only published</a></li>
+        		<li><a href="javascript:" ng-click="filter.published = undefined; filter.featured = true;">Only featured</a></li>
+        		<li class="separator"></li>
+        		<li><a href="javascript:" ng-click="create()">Create post</a></li>
+    		</ul>
+		</span>
+	</div>
+    <div href="javascript:" ng-repeat="i in posts | filter:filter" ng-class="{ 'selected': selectedPost == i }" class="list-item">
+    	<span class="list-title">
+    		<span ng-if="i.featured">*</span>
+    		{{i.title}}
+    	</span>
+    	<span class="list-subtitle">
+    		{{i.date | date:'MMM dd, yyyy'}}
+		</span>
+    	<span class="list-more drop">
+    		<i class="fa fa-ellipsis-v"></i>
+    		<ul class="dropdown">
+    			<li><a href="javascript:" ng-click="select(i)">Edit</a></li>
+    			<li><a href="javascript:" ng-click="delete(i)">Delete</a></li>
+			</ul>
+		</span>
+	</div>
+</div>

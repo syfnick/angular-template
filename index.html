@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Angular-Laravel Authentication</title>
-        <!-- Custom style -->
-        <link rel="stylesheet" href="./dist/style/all.css">
 
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css">
-        
-        <!-- Custom Fonts -->
-        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link href='http://fonts.useso.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<head>
+    <meta charset="utf-8">
+    <title>Nick's blog</title>
+    
+    <!-- Custom style -->
+    <link rel="stylesheet" href="./dist/style/all.css">
 
-        <base href="/">
-    </head>
-    <body ng-app="nick.blog">
-        <div class="activity-overlay" activity-overlay></div>
-        
-        <!-- main -->
-        <main>
-            <div ui-view autoscroll="true"></div>
-        </main>
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.useso.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css">
 
-        <hr>
-        <!-- Footer -->
-        <footer>
-            <div class="container">
+    <!-- Markdown style -->
+    <link href="./bower_components/bootstrap-markdown-editor/dist/css/bootstrap-markdown-editor.css" rel="stylesheet">
+
+    <base href="/">
+</head>
+
+<body ng-app="nick.blog">
+    <div class="activity-overlay" activity-overlay></div>
+    <!-- main -->
+    <main>
+        <div ui-view autoscroll="true"></div>
+    </main>
+    <hr>
+    <!-- Footer -->
+    <footer>
+        <!-- <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                         <ul class="list-inline text-center">
@@ -56,12 +60,11 @@
                                 </a>
                             </li>
                         </ul>
-                        <!-- <p class="copyright text-muted">Copyright &copy; Your Website {{'' | currentYear}}</p> -->
+                        <p class="copyright text-muted">2016</p>
                     </div>
                 </div>
-            </div>
-        </footer>
-    </body>
+            </div> -->
+    </footer>
 
     <!-- DEPENDENCIES -->
     <script src="./bower_components/jquery/dist/jquery.js" charset="utf-8"></script>
@@ -72,6 +75,14 @@
     <script src="./bower_components/satellizer/satellizer.js" charset="utf-8"></script>
     <script src="./bower_components/angular-animate/angular-animate.js" charset="utf-8"></script>
     
+    <!-- Markdown editor -->
+    <script src="./bower_components/ace-builds/src-min/ace.js"></script>
+    <script src="./bower_components/bootstrap-markdown-editor/dist/js/bootstrap-markdown-editor.js"></script>
+    <script src="./bower_components/marked/marked.min.js"></script>
+    
+    <!-- App -->
     <script src="./dist/js/all.js" charset="utf-8"></script>
+
     <!-- DEPENDENCIES -->
+</body>
 </html>

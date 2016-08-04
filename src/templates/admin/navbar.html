@@ -1,5 +1,5 @@
 <div ng-controller="NavController" class="sidebar">
-	<a ui-sref="main" class="sidebar-item">
+	<a ui-sref="admin-home" class="sidebar-item">
 		<i class="fa fa-home"></i>
 		<span class="hover">Home</span>
 	</a>
@@ -11,7 +11,7 @@
 		<i class="fa fa-user"></i>
 		<span class="hover">Users</span>
 	</a>
-	<a ui-sref="admin-about" ng-class="{ 'selected': isActive('/about') }" class="sidebar-item">
+	<a ui-sref="about" ng-class="{ 'selected': isActive('/about') }" class="sidebar-item">
 		<i class="fa fa-question-circle"></i>
 		<span class="hover">About</span>
 	</a>

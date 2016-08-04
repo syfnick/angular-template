@@ -18,15 +18,15 @@ var dir = {
         images: 'src/images/*',
         templates: 'src/templates/**/*',
         js: 'src/js/**/*',
-        scss: 'src/styles/**/*.scss',
-        bower: 'src/bower_components/**/*'
+        scss: 'src/styles/**/[^_]*.scss',
+        common: 'src/common/**/*'
     },
     dest: {
         images: 'dist/images',
         html: 'dist/html',
         js: 'dist/js',
         css: 'dist/style',
-        bower: 'bower_components'
+        common: 'dist/common'
     }
 };
 
@@ -48,6 +48,11 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest(dir.dest.js));
 });
 
+gulp.task('common', function() {
+    return gulp.src(dir.src.common)
+        .pipe(gulp.dest(dir.dest.common))
+})
+
 gulp.task('html', function() {
     return gulp.src(dir.src.templates)
         .pipe(gulp.dest(dir.dest.html))
@@ -59,6 +64,7 @@ gulp.task('images', function() {
 })
 
 gulp.task('watch', function() {
+    gulp.watch(dir.src.common, ['common']);
     gulp.watch(dir.src.js, ['scripts']);
     gulp.watch(dir.src.scss, ['sass']);
     gulp.watch(dir.src.templates, ['html']);
@@ -66,7 +72,7 @@ gulp.task('watch', function() {
 });
 
 gulp.task('clean', function() {
-    return gulp.src([dir.dest.html, dir.dest.css, dir.dest.images, dir.dest.js], {
+    return gulp.src([dir.dest.html, dir.dest.css, dir.dest.images, dir.dest.js, dir.dest.common], {
             read: false
         })
         .pipe(clean());
@@ -81,8 +87,6 @@ gulp.task('serve', function() {
         }));
 });
 
-gulp.task('build', ['sass', 'scripts', 'images', 'html']);
+gulp.task('build', ['sass', 'scripts', 'images', 'html', 'common']);
 
-gulp.task('default', ['sass', 'scripts', 'images', 'html', 'watch', 'serve']);
-
-gulp.task('deploy', ['sass', 'scripts', 'html', 'images', 'bower']);
+gulp.task('default', ['sass', 'scripts', 'images', 'html', 'common', 'watch', 'serve']);

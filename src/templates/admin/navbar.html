@@ -7,6 +7,10 @@
 		<i class="fa fa-pencil"></i>
 		<span class="hover">Posts</span>
 	</a>
+	<a ui-sref="admin-categories" ng-class="{ 'selected': isActive('/categories') }" class="sidebar-item">
+		<i class="fa fa-sitemap"></i>
+		<span class="hover">Categories</span>
+	</a>
 	<a ui-sref="admin-users" ng-class="{ 'selected': isActive('/users') }" class="sidebar-item">
 		<i class="fa fa-user"></i>
 		<span class="hover">Users</span>

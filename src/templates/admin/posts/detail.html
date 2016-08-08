@@ -1,56 +1,33 @@
 <div class="detail">
     <div ng-show="selectedPost">
-        <div class="content" ng-hide="edit">
+        <div class="content" ng-hide="edit || isNewPost">
             <div class="content-header">
                 <div class="content-header-title-container">
                     <h1 class="content-title" ng-bind="selectedPost.title"></h1>
                     <p class="content-subtitle">By
                         <a href="javascript:;" ng-bind="selectedPost.user.name"></a> Updated at <span ng-bind="selectedPost.updated_at"></span></p>
                 </div>
-                <div class="content-header-controls"><span class="secondary-button">draft</span><a href="javascript:" class="edit-button" ng-click="editPost()">Edit</a></div>
+                <div class="content-header-controls"><a href="javascript:" class="delete-button btn btn-danger" delete-button confirmed-click="deletePost()">Delete</a><a href="javascript:" class="edit-button btn btn-primary" ng-click="editPost()">Edit</a></div>
             </div>
-            <div class="content-body" ng-bind="selectedPost.body"></div>
+            <div class="content-body" ng-bind-html="selectedPost.body | markdownToHtml"></div>
             <div class="content-footer">
                 <p class="main-subhead">Category / <span ng-bind="selectedPost.category.name"></span></p>
             </div>
         </div>
-        <div class="edit-container" ng-show="edit">
+        <div class="edit-container" ng-show="edit || isNewPost">
             <div class="crud">
-                <h2 class="main-subhead">Edit post</h2>
+                <h2 class="main-subhead">{{editTitle}}</h2>
                 <div class="crud-container">
-                    <form class="form-horizontal" role="form">
+                    <form ng-submit="save()" class="form-horizontal" role="form">
                         <div class="form-group">
-                            <input name="postTitle" class="form-control" type="text" placeholder="Post Title">
-                            <input name="postSlug" class="form-control" type="text" placeholder="Post Slug">
+                            <input name="postTitle" class="form-control" type="text" ng-model="selectedPost.title" placeholder="Post Title" required>
+                            <input name="postSlug" class="form-control" type="text" ng-model="selectedPost.slug" placeholder="Post Slug" required>
                         </div>
                         <div class="form-group">
-                            <textarea name="text" id="postEditor"># Header Level 1
-
-**Pellentesque habitant morbi tristique** senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. _Aenean ultricies mi vitae est_. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, `commodo vitae`, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum  rutrum orci, sagittis tempus lacus enim ac dui. [Donec non enim](#) in turpis pulvinar facilisis. Ut felis.
-
-## Header Level 2
-
-  1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-  2. Aliquam tincidunt mauris eu risus.
-
-
-> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur  massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.
-
-### Header Level 3
-
-  * Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-  * Aliquam tincidunt mauris eu risus.
-
-```
-#header h1 a {
-  display: block;
-  width: 300px;
-  height: 80px;
-}
-```</textarea>
+                            <textarea name="postBody" id="postEditor" markdown-editor rows="10" ng-model="selectedPost.body" required></textarea>
                         </div>
                         <div class="form-group">
-                            <input name="postCategory" class="form-control" type="text" placeholder="Category">
+                            <select ng-change="changeCategory(selectedCategory)" class="form-control" name="postCategory" ng-model="selectedCategory" ng-options="option.name for option in categories track by option.id"></select>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-success">Save</button>
@@ -61,85 +38,3 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-(function($) {
-
-    $('#postEditor').markdownEditor({
-        // Activate the preview:
-        preview: true,
-
-        // This callback is called when the user click on the preview button:
-        onPreview: function(content, callback) {
-            var htmlContent = marked(content);
-            callback(htmlContent);
-        }
-    });
-
-    // process the form
-    $('form').submit(function(event) {
-
-        var postTitle = $('input[name=postTitle]').val();
-        var postSlug = $('input[name=postSlug]').val();
-        var postBody = marked($('#postEditor').val());
-        var postCategory = $('input[name=postCategory]').val();
-
-        // remove the past errors
-        // $('#name-group').removeClass('has-error');
-        // $('#name-group .help-block').empty();
-        // $('#superhero-group').removeClass('has-error');
-        // $('#superhero-group .help-block').empty();
-
-        // // remove success messages
-        // $('#messages').removeClass('alert alert-success').empty();
-
-        // // get the form data
-        // var formData = {
-        //     'name': $('input[name=name]').val(),
-        //     'superheroAlias': $('input[name=superheroAlias]').val()
-        // };
-
-        // process the form
-        // $.ajax({
-        //     type: 'POST',
-        //     url: 'process.php',
-        //     data: formData,
-        //     dataType: 'json',
-        //     success: function(data) {
-
-        //         // log data to the console so we can see
-        //         console.log(data);
-
-        //         // if validation fails
-        //         // add the error class to show a red input
-        //         // add the error message to the help block under the input
-        //         if (!data.success) {
-
-        //             if (data.errors.name) {
-        //                 $('#name-group').addClass('has-error');
-        //                 $('#name-group .help-block').html(data.errors.name);
-        //             }
-
-        //             if (data.errors.superheroAlias) {
-        //                 $('#superhero-group').addClass('has-error');
-        //                 $('#superhero-group .help-block').html(data.errors.superheroAlias);
-        //             }
-
-        //         } else {
-
-        //             // if validation is good add success message
-        //             $('#messages').addClass('alert alert-success').append('<p>' + data.message + '</p>');
-        //         }
-        //     }
-        // });
-
-        // stop the form from submitting and refreshing
-        event.preventDefault();
-    });
-
-    // $(document).on('click', '#postArticle', function(event) {
-    //     event.preventDefault();
-    //     /* Act on the event */
-    //     alert('save');
-    // });
-}(jQuery));
-</script>

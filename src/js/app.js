@@ -71,3 +71,12 @@ angular.module('nick.blog').filter('limitHtml',
         }
     }
 );
+
+// Markdown to html
+angular.module('nick.blog').filter('markdownToHtml',
+    function() {
+        return function(text) {
+            return marked(text || '');
+        }
+    }
+);

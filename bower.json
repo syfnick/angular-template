@@ -23,7 +23,7 @@
     "angular-sanitize": "~1.4.9",
     "angular-animate": "~1.4.9",
     "satellizer": "~0.13.4",
-    "bootstrap-markdown-editor": "^2.0.1",
+    "bootstrap-markdown": "^2.10.0",
     "marked": "^0.3.6"
   },
   "devDependencies": {
@@ -34,7 +34,7 @@
     "angular-sanitize": "~1.4.9",
     "angular-animate": "~1.4.9",
     "satellizer": "~0.13.4",
-    "bootstrap-markdown-editor": "^2.0.1",
+    "bootstrap-markdown": "^2.10.0",
     "marked": "^0.3.6"
   }
 }

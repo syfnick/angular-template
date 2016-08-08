@@ -191,7 +191,6 @@ select {
                 padding: 3px 8px;
                 font-size: 0.6em;
                 cursor: pointer;
-                background: rgb(28, 184, 65);
                 color: white;
                 text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
                 margin-top: -10px;
@@ -223,6 +222,12 @@ select {
                 word-spacing: normal;
                 vertical-align: top;
                 text-rendering: auto;
+
+                h3 {
+                    width: 64px;
+                    height: 64px;
+                    color: #1ebd84;
+                }
             }
 
             .list-item-content {
@@ -233,6 +238,7 @@ select {
                 word-spacing: normal;
                 vertical-align: top;
                 text-rendering: auto;
+                color: #4666de;
 
                 .list-name, .list-subject {
                     margin: 0;
@@ -328,8 +334,7 @@ select {
                     box-shadow: none;
                 }
 
-                .edit-button {
-                    background: rgb(202, 60, 60);
+                .delete-button, .edit-button {
                     font-size: 100%;
                     padding: .5em 1.5em;
                     margin-left: 10px;

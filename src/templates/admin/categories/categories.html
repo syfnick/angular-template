@@ -1,6 +1,6 @@
 <div class="list">
-    <div class="post-filter">
-        <h2 class="title-subhead">All Posts <a href="javascript:" ng-click="search=!search">[+]</a><a href="javascript:" ng-click="create()" title="Add New Post" class="options btn btn-success">Add New</a></h2>
+    <div class="category-filter">
+        <h2 class="title-subhead">All Categories <a href="javascript:" ng-click="search=!search">[+]</a><a href="javascript:" ng-click="create()" title="Add New Category" class="options btn btn-danger">Add New</a></h2>
     </div>
 
     <div class="search" ng-hide="search">
@@ -12,13 +12,13 @@
         </div>
     </div>
 
-    <div href="javascript:" ng-repeat="i in posts | filter:query" ng-class="{ 'selected': selectedPost == i }" ng-click="select(i)" class="list-item">
+    <div href="javascript:" ng-repeat="i in categories | filter:query" ng-class="{ 'selected': selectedCategory == i }" ng-click="select(i)" class="list-item">
         <div class="list-item-avatar">
-            <img class="list-avatar" src="http://www.sunyifan.site/{{i.user.avatar}}" height="64" width="64">
+            <h3>{{i.id}}</h3>
         </div>
 
         <div class="list-item-content">
-            <h5 class="list-name">{{i.title}}</h5>
+            <h5 class="list-name">{{i.name}}</h5>
             <h4 class="list-subject">{{i.created_at | date:'MMM dd, yyyy'}}</h4>
             <p class="list-desc">{{i.slug}}</p>
         </div>

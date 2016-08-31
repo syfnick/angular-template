@@ -1,0 +1,26 @@
+<div class="list">
+    <div class="user-filter">
+        <h2 class="title-subhead">All Users <a href="javascript:" ng-click="search=!search">[+]</a><a href="javascript:" ng-click="create()" title="Add New User" class="options btn btn-danger">Add New</a></h2>
+    </div>
+
+    <div class="search" ng-hide="search">
+        <h2 class="title-subhead">Search</h2>
+        <div class="filter-box">
+            <form class="form-horizontal">
+                <input type="text" class="form-control" placeholder="search" ng-model="query">
+            </form>
+        </div>
+    </div>
+
+    <div href="javascript:" ng-repeat="i in users | filter:query" ng-class="{ 'selected': selectedUser == i }" ng-click="select(i)" class="list-item">
+        <div class="list-item-avatar">
+            <img class="list-avatar" src="http://localhost:8000/{{i.avatar}}" width="64" height="64" />
+        </div>
+
+        <div class="list-item-content">
+            <h5 class="list-name">{{i.name}}</h5>
+            <h4 class="list-subject">{{i.created_at | date:'MMM dd, yyyy'}}</h4>
+            <p class="list-desc">{{i.email}}</p>
+        </div>
+    </div>
+</div>

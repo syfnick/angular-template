@@ -3,23 +3,46 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Nick's blog</title>
-    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="孙一凡, Nick SUN, AngularJS, Laravel, Bootstrap">
+    <meta name="author" content="Nick SUN">
+    <title>孙一凡</title>
     <!-- Custom style -->
     <link rel="stylesheet" href="./dist/style/all.css">
-
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.useso.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    
     <!-- Bootstrap -->
     <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css">
-
     <!-- Markdown style -->
     <link href="./bower_components/bootstrap-markdown/css/bootstrap-markdown.min.css" rel="stylesheet">
-
+    <link href="./bower_components/highlightjs/styles/github.css" rel="stylesheet">
     <base href="/">
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?3f00c8756f5b8323411ab4f0c4389f73";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
 </head>
 
 <body ng-app="nick.blog">
@@ -31,41 +54,48 @@
     <hr>
     <!-- Footer -->
     <footer>
-        <!-- <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                        <ul class="list-inline text-center">
-                            <li>
-                                <a href="#">
-                                    <span class="fa-stack fa-lg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="http://weibo.com/uownick">
+                                <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                        <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
                                     </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="fa-stack fa-lg">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./dist/images/qrcode_for_wechat.jpg">
+                                <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                        <i class="fa fa-weixin fa-stack-1x fa-inverse"></i>
                                     </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="fa-stack fa-lg">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.linkedin.com/in/%E4%B8%80%E5%87%A1-%E5%AD%99-b64658b6">
+                                <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                    </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/syfnick/">
+                                <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x"></i>
                                         <i class="fa fa-github fa-stack-1x fa-inverse"></i>
                                     </span>
-                                </a>
-                            </li>
-                        </ul>
-                        <p class="copyright text-muted">2016</p>
-                    </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">2016</p>
                 </div>
-            </div> -->
+            </div>
+        </div>
     </footer>
-
     <!-- DEPENDENCIES -->
     <script src="./bower_components/jquery/dist/jquery.js" charset="utf-8"></script>
     <script src="./bower_components/bootstrap/dist/js/bootstrap.js" charset="utf-8"></script>
@@ -74,14 +104,13 @@
     <script src="./bower_components/angular-ui-router/release/angular-ui-router.js" charset="utf-8"></script>
     <script src="./bower_components/satellizer/satellizer.js" charset="utf-8"></script>
     <script src="./bower_components/angular-animate/angular-animate.js" charset="utf-8"></script>
-    
     <!-- Markdown editor -->
     <script src="./bower_components/bootstrap-markdown/js/bootstrap-markdown.js"></script>
     <script src="./bower_components/marked/marked.min.js"></script>
-
+    <script src="./bower_components/highlightjs/highlight.pack.js"></script>
     <!-- App -->
     <script src="./dist/js/all.js" charset="utf-8"></script>
-
     <!-- DEPENDENCIES -->
 </body>
+
 </html>

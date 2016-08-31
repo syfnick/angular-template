@@ -1,0 +1,12 @@
+<div class="detail">
+    <div ng-show="selectedUser">
+        <div class="content">
+            <img src="http://localhost:8000/{{selectedUser.avatar}}" width="350" />
+            <h3>{{selectedUser.email}}</h3>
+            <label class="btn btn-warning btn-file">
+                Upload avatar
+                <input type="file" custom-on-change="uploadAvatar" style="display: none;">
+            </label>
+        </div>
+    </div>
+</div>

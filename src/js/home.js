@@ -14,7 +14,7 @@
                     controller: 'HomeController as home'
                 })
                 .state('post', {
-                    url: '/post/{slug}',
+                    url: '/post/{id}',
                     templateUrl: './dist/html/post.html',
                     controller: 'PostController as post'
                 });
@@ -23,15 +23,17 @@
 
     angular.module('nick.blog').controller('HomeController', ['$state', '$stateParams', '$http', '$scope', 'API_ROOT',
         function($state, $stateParams, $http, $scope, API_ROOT) {
-            $scope.page_title = "Page title";
-            $scope.page_subtitle = "sub title";
+            
+            $("footer").show();
+
+            $scope.page_title = "笔记";
+            $scope.page_subtitle = "";
             $scope.date = new Date();
             $scope.posts = [];
             $scope.totalPages = 0;
             $scope.currentPage = 1;
             
             $scope.page = [];
-            // 分页数
             $scope.listSizes = 5;
 
             // DATE FORMAT
@@ -69,7 +71,6 @@
                         }
                     }
 
-                    // 偏移数
                     $scope.offsetPage = ($scope.currentPage - 1) < 0 ? 0 : $scope.currentPage - 1;
 
                     var last = Math.min(Number($scope.offsetPage) + Number($scope.listSizes), $scope.totalPages);
@@ -91,8 +92,7 @@
     ]).controller('PostController', ['$scope', '$http', '$state', '$stateParams', 'API_ROOT',
         function($scope, $http, $state, $stateParams, API_ROOT) {
 
-            $scope.page_title = 'Page title';
-            if ($stateParams.slug == undefined) {
+            if ($stateParams.id == undefined) {
                 $state.go('home');
             }
 
@@ -106,8 +106,11 @@
                 }
             };
 
-            var post_slug = $stateParams.slug;
-            $http.get(API_ROOT + post_slug).success(function(response) {
+            var post_id = $stateParams.id;
+            $http.get(API_ROOT + "posts/" + post_id).success(function(response) {
+                if (response == "") { 
+                    $state.go('404'); 
+                }
                 $scope.post_id = response.id;
                 $scope.post_date = response.created_at;
                 $scope.post_title = response.title;

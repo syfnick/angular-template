@@ -56,8 +56,8 @@
         }
     ]);
 
-    angular.module('nick.blog').controller('RegisterController', ['$state', '$auth',
-        function($state, $auth) {
+    angular.module('nick.blog').controller('RegisterController', ['$state', '$auth', '$http', '$rootScope', 'API_ROOT',
+        function($state, $auth, $http, $rootScope, API_ROOT) {
             var vm = this;
             vm.user = {};
             vm.register = function () {
@@ -66,8 +66,32 @@
                     email: vm.user.email,
                     password: vm.user.password
                 }).then(function(response) {
-                    console.log(response);
-                    $state.go('dashboard');
+                    return $auth.login({
+                        email: vm.user.email,
+                        password: vm.user.password
+                    });
+                }).then(function(response) {
+                    return $http.get(API_ROOT + 'auth/user');
+                }).then(function(response) {
+                    // Stringify the returned data to prepare it
+                    // to go into local storage
+                    var user = JSON.stringify(response.data.user);
+
+                    // Set the stringified user data into local storage
+                    localStorage.setItem('user', user);
+
+                    // The user's authenticated state gets flipped to
+                    // true so we can now show parts of the UI that rely
+                    // on the user being logged in
+                    $rootScope.authenticated = true;
+
+                    // Putting the user's data on $rootScope allows
+                    // us to access it anywhere across the app
+                    $rootScope.currentUser = response.data.user;
+
+                    // Everything worked out so we can now redirect to
+                    // the users state to view the data
+                    $state.go('home');
                 }).catch(function(response) {
                     console.log(response);
                     window.alert('Error: Register failed');

@@ -18,7 +18,7 @@ angular.module('nick.blog', ['ui.router', 'satellizer', 'ngAnimate', 'ui.router'
             $httpProvider.interceptors.push('redirectWhenLoggedOut');
         }
     ])
-    .constant('API_ROOT', 'http://localhost:8000/v1/')
+    .constant('API_ROOT', 'http://api.sunyifan.site/v1/')
     .factory('redirectWhenLoggedOut', ['$q', '$injector',
         function($q, $injector) {
             return {
@@ -50,6 +50,9 @@ angular.module('nick.blog', ['ui.router', 'satellizer', 'ngAnimate', 'ui.router'
             $rootScope.$on('$stateChangeStart', function(event, toState) {
                 var user = JSON.parse(localStorage.getItem('user'));
                 if (user) {
+                    if (user.id == 1) {
+                        $rootScope.isAdmin = true;
+                    }
                     $rootScope.authenticated = true;
                     $rootScope.currentUser = user;
                     if (toState.name === "login") {
@@ -76,7 +79,15 @@ angular.module('nick.blog').filter('limitHtml',
 angular.module('nick.blog').filter('markdownToHtml',
     function() {
         return function(text) {
-            return marked(text || '');
+            var renderer = new marked.Renderer();
+
+            renderer.code = function(code, language){
+              return '<pre><code class="hljs ' + language + '">' + 
+                hljs.highlight(language, code).value +
+                '</code></pre>';
+            };
+
+            return marked(text || '', { renderer: renderer });
         }
     }
 );

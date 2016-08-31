@@ -14,7 +14,7 @@
 
     <div href="javascript:" ng-repeat="i in posts | filter:query" ng-class="{ 'selected': selectedPost == i }" ng-click="select(i)" class="list-item">
         <div class="list-item-avatar">
-            <img class="list-avatar" alt="Yahoo! Finance's Avatar" src="./dist/images/avatar.gif" height="64" width="64">
+            <img class="list-avatar" src="http://www.sunyifan.site/{{i.user.avatar}}" height="64" width="64">
         </div>
 
         <div class="list-item-content">

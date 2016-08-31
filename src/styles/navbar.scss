@@ -4,10 +4,9 @@
     left: 0;
     right: 0;
     z-index: 100;
-
     .navbar {
         background: rgba(39, 50, 56, 0.95);
-        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2)
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
     }
 }
 
@@ -17,85 +16,101 @@
     font-size: 14px;
     position: relative;
     z-index: 100;
-
     .navbar-brand {
         font-size: 16px;
-        color: #fff;
-        float: left
+        color: #337ab7;
+        float: left;
     }
-
-    a {
-        padding: 0 22px;
-        color: #556f79;
-        text-decoration: none;
-        display: block;
-
-        .icon-left {
-            margin-right: 8px
+    .navbar-toggle {
+        border-color: #337ab7;
+        .icon-bar {
+            background-color: #337ab7;
+            display: block;
+            width: 22px;
+            height: 2px;
+            border-radius: 1px;
         }
     }
+}
 
-    ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-
-        &.nav.navbar-right {
-            float: right
-        }
-
-        &.nav > li {
-            float: left;
-            position: relative;
-            transition: all linear .2s;
-
-            &:hover > a, &.active > a {
-                color: #fff
-            }
-
-            &.active {
-                box-shadow: 0 -4px 0 #5d5d5d inset
-            }
-
-            &:hover ul.dropdown {
-                display: block
-            }
-
-            a:hover {
-                background-color: #5d5d5d;
-                color: #fff
-            }
-        }
-
-        &.dropdown {
-            min-width: 160px;
-            background: #5d5d5d;
-            white-space: nowrap;
-            position: absolute;
-            display: none;
-            right: 0;
-            top: 100%;
-
-            li {
-                border-top: 1px solid #5d5d5d;
+@media only screen and (max-width: 767px) {
+    .dropdown ul.dropdown-menu {
+        li {
+            a {
+                font-size: 13px;
+                color: #337ab7;
                 line-height: 50px;
-                display: block;
-
-                a {
-                    font-size: 13px
+                i {
+                    display: none;
                 }
-
-                &:hover a {
-                    color: #fff
-                }
-
             }
         }
     }
 }
 
-#login {
-    a {
-        color: #83cbc4;
+@media only screen and (min-width: 768px) {
+    .navbar {
+        a {
+            color: #556f79;
+            text-decoration: none;
+            display: block;
+            .icon-left {
+                margin-right: 8px;
+            }
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            &.nav.navbar-right {
+                float: right;
+            }
+            &.nav > li {
+                float: left;
+                position: relative;
+                transition: all linear .2s;
+                &:hover > a,
+                &.active > a {
+                    color: #fff;
+                }
+                &:hover > a {
+                    background-color: #5d5d5d;
+                }
+                &.active {
+                    box-shadow: 0 -4px 0 #5d5d5d inset;
+                }
+                &.dropdown:hover ul.dropdown-menu {
+                    display: block;
+                }
+                a:hover {
+                    background-color: #5d5d5d;
+                    color: #fff;
+                }
+                &.dropdown ul.dropdown-menu {
+                    min-width: 160px;
+                    background: #5d5d5d;
+                    white-space: nowrap;
+                    position: absolute;
+                    display: none;
+                    right: 0;
+                    top: 100%;
+                    li {
+                        display: block;
+                        a {
+                            font-size: 13px;
+                            color: #83cbc4;
+                            border-top: 1px solid #5d5d5d;
+                            line-height: 50px;
+                            i {
+                                display: inline;
+                            }
+                        }
+                        &:hover a {
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

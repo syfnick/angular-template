@@ -1,6 +1,6 @@
 input,
 select {
-    min-width: 300px
+    min-width: 300px;
 }
 
 .drop {
@@ -9,7 +9,7 @@ select {
 }
 
 .drop:hover ul.dropdown {
-    display: inline-block
+    display: inline-block;
 }
 
 .drop ul.dropdown {
@@ -35,11 +35,11 @@ select {
     height: 1px;
     margin: 2px 12px;
     background: #e6e6e6;
-    display: block
+    display: block;
 }
 
 .drop ul.dropdown li:hover {
-    background: #f0f0f0
+    background: #f0f0f0;
 }
 
 .drop ul.dropdown li a {
@@ -48,7 +48,7 @@ select {
     font-size: 13px;
     color: #505050;
     text-decoration: none;
-    display: block
+    display: block;
 }
 
 .tag {
@@ -65,30 +65,27 @@ select {
 }
 
 .tag.disabled {
-    background: rgba(85, 111, 121, 0.2)
+    background: rgba(85, 111, 121, 0.2);
 }
 
 .block {
     width: 100%;
-    display: block
+    display: block;
 }
 
 .bottom {
     position: absolute !important;
     bottom: 0;
     left: 0;
-    right: 0
+    right: 0;
 }
-
-
-
 
 .admin .sidebar,
 .admin .list,
 .admin .detail,
 .admin .page {
     display: block;
-    position: absolute
+    position: absolute;
 }
 
 .admin {
@@ -129,7 +126,7 @@ select {
                 opacity: 0;
                 transform: translateX(-10px);
                 -webkit-transform: translateX(-10px);
-                transition: all linear .2s
+                transition: all linear .2s;
             }
 
             &:hover {
@@ -138,13 +135,13 @@ select {
                 .hover {
                     opacity: 1;
                     transform: translateX(0);
-                    -webkit-transform: translateX(0)
+                    -webkit-transform: translateX(0);
                 }
             }
 
             &.selected {
                 box-shadow: 3px 0 0 #83cbc4 inset;
-                color: #fff
+                color: #fff;
             }
         }
     }
@@ -259,8 +256,6 @@ select {
                     margin: 0.4em 0;
                     line-height: 1.7em;
                 }
-
-
             }
         }
 

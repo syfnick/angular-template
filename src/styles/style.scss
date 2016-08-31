@@ -62,9 +62,12 @@ hr.small {
 
 @media only screen and (min-width: 768px) {
     .intro-header .site-heading,
-    .intro-header .post-heading,
     .intro-header .page-heading {
         padding: 150px 0px 100px 0px;
+    }
+
+    .intro-header .post-heading {
+        padding: 150px 0px 50px 0px;
     }
 }
 
@@ -133,10 +136,6 @@ hr.small {
     }
 }
 
-.post-preview > a {
-    color: #404040;
-}
-
 .post-preview > a:hover,
 .post-preview > a:focus {
     text-decoration: none;
@@ -164,7 +163,7 @@ hr.small {
 
 .post-preview > .post-meta > a {
     text-decoration: none;
-    color: #404040;
+    color: #009966;
 }
 
 .post-preview > .post-meta > a:hover,

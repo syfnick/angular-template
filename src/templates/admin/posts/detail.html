@@ -21,10 +21,13 @@
                     <form ng-submit="save()" class="form-horizontal" role="form">
                         <div class="form-group">
                             <input name="postTitle" class="form-control" type="text" ng-model="selectedPost.title" placeholder="Post Title" required>
-                            <input name="postSlug" class="form-control" type="text" ng-model="selectedPost.slug" placeholder="Post Slug" required>
                         </div>
                         <div class="form-group">
                             <textarea name="postBody" id="postEditor" markdown-editor rows="10" ng-model="selectedPost.body" required></textarea>
+                            <label class="btn btn-warning btn-file">
+                                选择上传文件 <input type="file" custom-on-change="uploadFile" style="display: none;">
+                            </label>
+                            <!-- <input type="file" /> -->
                         </div>
                         <div class="form-group">
                             <select ng-change="changeCategory(selectedCategory)" class="form-control" name="postCategory" ng-model="selectedCategory" ng-options="option.name for option in categories track by option.id"></select>

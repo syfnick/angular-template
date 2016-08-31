@@ -22,7 +22,7 @@
             <p class="text-center" ng-show="loading"><span class="fa fa-spinner fa-3x fa-spin"></span></p>
             <div ng-hide="noResult" class="post-preview" ng-repeat="post in posts">
                 <h2 class="post-title">
-                    <a ui-sref="post({slug:post.slug})">{{ post.title }}</a>
+                    <a ui-sref="post({id:post.id})">{{ post.title }}</a>
                 </h2>
                 <div ng-show="post.category != undefined">
                     <ul class="list-unstyled post-categories">

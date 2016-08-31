@@ -1,5 +1,5 @@
 {
-  "name": "Clean blog",
+  "name": "nick blog",
   "authors": [
     "Nick Sun <syfnick@gmail.com>"
   ],
@@ -24,7 +24,8 @@
     "angular-animate": "~1.4.9",
     "satellizer": "~0.13.4",
     "bootstrap-markdown": "^2.10.0",
-    "marked": "^0.3.6"
+    "marked": "^0.3.6",
+    "highlightjs": "^8.4.0"
   },
   "devDependencies": {
     "angular": "~1.4.9",
@@ -35,6 +36,7 @@
     "angular-animate": "~1.4.9",
     "satellizer": "~0.13.4",
     "bootstrap-markdown": "^2.10.0",
-    "marked": "^0.3.6"
+    "marked": "^0.3.6",
+    "highlightjs": "^8.4.0"
   }
 }

@@ -12,6 +12,8 @@
 
     angular.module('nick.blog').controller('AboutController', ['$scope', '$http', 'API_ROOT', 
         function($scope, $http, API_ROOT) {
+            $("footer").show();
+            
             return $http.get(API_ROOT + 'about').success(function(content) {
                 return $scope.content = content;
             });

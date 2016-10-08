@@ -27,7 +27,7 @@
             $("footer").show();
 
             $scope.page_title = "笔记";
-            $scope.page_subtitle = "";
+            $scope.page_subtitle = "程序猿一枚";
             $scope.date = new Date();
             $scope.posts = [];
             $scope.totalPages = 0;
